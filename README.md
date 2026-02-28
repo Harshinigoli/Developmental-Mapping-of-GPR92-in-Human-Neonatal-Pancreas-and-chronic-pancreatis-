@@ -8,7 +8,6 @@ An integrated, reproducible workflow to explore **GPR92 / LPAR5** expression acr
 
 ## Repository structure
 
-- `notebooks/00_original_*.ipynb` — original working notebooks (traceability)
 - `notebooks/01_neonatal_scRNA_clean.ipynb`
 - `notebooks/02_chronic_pancreatitis_scRNA_clean.ipynb`
 - `notebooks/03_pancreatic_spatial_clean.ipynb`
@@ -38,7 +37,7 @@ If your filenames differ, update the **Load datasets** cell(s) in each notebook.
 jupyter lab
 ```
 
-Suggested order:
+ order:
 1. `01_neonatal_scRNA_clean.ipynb`
 2. `02_chronic_pancreatitis_scRNA_clean.ipynb`
 3. `03_pancreatic_spatial_clean.ipynb`
@@ -52,12 +51,7 @@ jupyter nbconvert --to html notebooks/01_neonatal_scRNA_clean.ipynb --output ind
 
 Commit `index.html` to repo root → GitHub **Settings → Pages** → Deploy from branch → `/ (root)`.
 
-## Refactor notes
 
-- Removed machine-specific absolute paths → repo-relative `data/`
-- Removed `pip install` lines from notebooks → `requirements.txt`
-- Consolidated repeated helper code into `src/`
-- Routed outputs into `outputs/`
 
 ## License
 MIT (see `LICENSE`).
