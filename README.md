@@ -1,18 +1,15 @@
 # Developmental Mapping of GPR92 (LPAR5) in Human Neonatal Pancreas and Chronic Pancreatitis
 
-This repository contains a cleaned, reproducible version of the analysis notebook for exploring **GPR92 / LPAR5** expression patterns in human neonatal pancreas datasets (and extension to chronic pancreatitis).
+This repository contains a reproducible version of the analysis notebook for exploring **GPR92 / LPAR5** expression patterns in human neonatal pancreas datasets (and extension to chronic pancreatitis).
 
 ## What’s in this repo
 
-- `notebooks/00_original_neonates_pancreas.ipynb` — your original working notebook (kept for traceability)
 - `notebooks/01_neonates_pancreas_clean.ipynb` — **refactored** notebook with:
   - portable paths (expects `data/` relative to repo)
-  - duplicated / repetitive cells removed
   - logic organized into clear sections
-  - shared logic moved into `src/` modules
+  - `src/` modules
 - `src/` — reusable functions (loading, scoring, plotting utilities)
 - `outputs/` — generated figures / PDFs (created at runtime; not required to commit)
-- `data/` — **not committed** (put raw/processed files here locally)
 
 ## Quickstart
 
@@ -24,7 +21,7 @@ source .venv/bin/activate   # macOS/Linux
 pip install -r requirements.txt
 ```
 
-### 2) Add your data files
+### 2) Add data files
 Place raw files under:
 - `data/raw/`
 
@@ -41,20 +38,6 @@ Open: `notebooks/01_neonates_pancreas_clean.ipynb` and run top-to-bottom.
 
 ## GitHub Pages (for HTML viewing)
 
-If you also want a static HTML view:
-1. Export the notebook:
-   ```bash
-   jupyter nbconvert --to html notebooks/01_neonates_pancreas_clean.ipynb --output index.html
-   ```
-2. Commit `index.html` to the repo root
-3. In GitHub: **Settings → Pages** → Deploy from branch → `/ (root)`
-
-## Notes on refactor
-
-This refactor focuses on **reproducibility** and **readability**:
-- absolute machine-specific paths were removed
-- duplicate / repeated helper definitions were consolidated into `src/`
-- install lines like `pip install ...` were removed from the notebook and moved to `requirements.txt`
 
 ## License
 MIT (see `LICENSE`).
