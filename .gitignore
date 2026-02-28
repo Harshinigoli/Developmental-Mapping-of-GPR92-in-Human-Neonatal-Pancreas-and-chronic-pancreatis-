@@ -1,0 +1,21 @@
+# data
+data/raw/
+data/processed/
+*.h5ad
+*.loom
+*.mtx
+*.h5
+*.csv.gz
+*.tsv.gz
+
+# outputs
+outputs/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# notebooks
+.ipynb_checkpoints/
