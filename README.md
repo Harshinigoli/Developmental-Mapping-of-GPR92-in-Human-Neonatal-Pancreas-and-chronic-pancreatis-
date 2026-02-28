@@ -1,19 +1,25 @@
 # Developmental Mapping of GPR92 (LPAR5) in Human Neonatal Pancreas and Chronic Pancreatitis
 
-This repository contains a reproducible version of the analysis notebook for exploring **GPR92 / LPAR5** expression patterns in human neonatal pancreas datasets (and extension to chronic pancreatitis).
+An integrated, reproducible workflow to explore **GPR92 / LPAR5** expression across:
+- **Neonatal pancreas scRNA-seq**
+- **Chronic pancreatitis scRNA-seq**
+- **Pancreatic spatial transcriptomics**
+- An **integrated spatial analysis** notebook for cross-context interpretation
 
-## What’s in this repo
+## Repository structure
 
-- `notebooks/01_neonates_pancreas_clean.ipynb` — **refactored** notebook with:
-  - portable paths (expects `data/` relative to repo)
-  - logic organized into clear sections
-  - `src/` modules
-- `src/` — reusable functions (loading, scoring, plotting utilities)
-- `outputs/` — generated figures / PDFs (created at runtime; not required to commit)
+- `notebooks/00_original_*.ipynb` — original working notebooks (traceability)
+- `notebooks/01_neonatal_scRNA_clean.ipynb`
+- `notebooks/02_chronic_pancreatitis_scRNA_clean.ipynb`
+- `notebooks/03_pancreatic_spatial_clean.ipynb`
+- `notebooks/04_integrated_spatial_analysis_clean.ipynb`
+- `src/` — shared utilities (loading/QC, scoring, plotting, spatial plotting)
+- `data/` — local-only data (ignored by git)
+- `outputs/` — figures/tables (ignored by git)
 
 ## Quickstart
 
-### 1) Create an environment
+### 1) Create environment
 ```bash
 python -m venv .venv
 source .venv/bin/activate   # macOS/Linux
@@ -21,23 +27,37 @@ source .venv/bin/activate   # macOS/Linux
 pip install -r requirements.txt
 ```
 
-### 2) Add data files
-Place raw files under:
+### 2) Add data
+Put your raw inputs in:
 - `data/raw/`
 
-Then open the notebook and update filenames in the **Load datasets** section:
-- `OLANIRU_LONG_CSV_GZ`
-- `OMIX_MSTRT_UMI_TXT`
-- `OMIX_10X_UMI_TXT`
+If your filenames differ, update the **Load datasets** cell(s) in each notebook.
 
-### 3) Run the cleaned notebook
+### 3) Run notebooks
 ```bash
 jupyter lab
 ```
-Open: `notebooks/01_neonates_pancreas_clean.ipynb` and run top-to-bottom.
 
-## GitHub Pages (for HTML viewing)
+Suggested order:
+1. `01_neonatal_scRNA_clean.ipynb`
+2. `02_chronic_pancreatitis_scRNA_clean.ipynb`
+3. `03_pancreatic_spatial_clean.ipynb`
+4. `04_integrated_spatial_analysis_clean.ipynb`
 
+## Optional: publish notebook HTML with GitHub Pages
+
+```bash
+jupyter nbconvert --to html notebooks/01_neonatal_scRNA_clean.ipynb --output index.html
+```
+
+Commit `index.html` to repo root → GitHub **Settings → Pages** → Deploy from branch → `/ (root)`.
+
+## Refactor notes
+
+- Removed machine-specific absolute paths → repo-relative `data/`
+- Removed `pip install` lines from notebooks → `requirements.txt`
+- Consolidated repeated helper code into `src/`
+- Routed outputs into `outputs/`
 
 ## License
 MIT (see `LICENSE`).
